@@ -3,7 +3,8 @@ import {
     Datepicker,
     Input,
     initTE,
+    Select,
   } from "tw-elements";
+
   
-  
-  initTE({ Datepicker, Input });
+initTE({ Select, Datepicker, Input });
