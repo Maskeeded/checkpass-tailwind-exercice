@@ -140,27 +140,44 @@
 
     <script>
       
-  function checkPassword() {
-    var password = document.getElementById('passwordform').value;
+      function checkPassword() {
+  var password = document.getElementById('passwordform').value;
 
-    var lengthCheck = password.length >= 8;
-    var uppercaseCheck = /[A-Z]/.test(password);
-    var numberCheck = /\d/.test(password);
-    var symbolCheck = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+  var lengthCheck = password.length >= 8;
+  var uppercaseCheck = /[A-Z]/.test(password);
+  var numberCheck = /\d/.test(password);
+  var symbolCheck = /[!@#$%^&*(),.?":{}|<>]/.test(password);
 
-    console.log('test')
+  // Select the span element by id
+  var passwordid1 = document.getElementById('passwordletters');
+  var passwordid2 = document.getElementById('passwordbigletters');
+  var passwordid3 = document.getElementById('passwordnumber');
+  var passwordid4 = document.getElementById('passwordspecial');
 
-    // Select the span element by id
-    var passwordid1 = document.getElementById('passwordletters');
-    var passwordid2 = document.getElementById('passwordbigletters');
-    var passwordid3 = document.getElementById('passwordnumber');
-    var passwordid4 = document.getElementById('passwordspecial');
+  lengthCheck ? passwordid1.classList.replace('bg-red-500', 'bg-green-500') : passwordid1.classList.replace('bg-green-500', 'bg-red-500');
+  uppercaseCheck ? passwordid2.classList.replace('bg-red-500', 'bg-green-500') : passwordid2.classList.replace('bg-green-500', 'bg-red-500');
+  numberCheck ? passwordid3.classList.replace('bg-red-500', 'bg-green-500') : passwordid3.classList.replace('bg-green-500', 'bg-red-500');
+  symbolCheck ? passwordid4.classList.replace('bg-red-500', 'bg-green-500') : passwordid4.classList.replace('bg-green-500', 'bg-red-500');
 
-    lengthCheck ? passwordid1.classList.replace('bg-red-500', 'bg-green-500') : passwordid1.classList.replace('bg-green-500', 'bg-red-500');
-    uppercaseCheck ? passwordid2.classList.replace('bg-red-500', 'bg-green-500') : passwordid2.classList.replace('bg-green-500', 'bg-red-500');
-    numberCheck ? passwordid3.classList.replace('bg-red-500', 'bg-green-500') : passwordid3.classList.replace('bg-green-500', 'bg-red-500');
-    symbolCheck ? passwordid4.classList.replace('bg-red-500', 'bg-green-500') : passwordid4.classList.replace('bg-green-500', 'bg-red-500');
+  // Return the result of the checks
+  return lengthCheck && uppercaseCheck && numberCheck && symbolCheck;
 }
+
+// Get the confirm button
+let confirmButton = document.querySelector('#validation-1');
+
+// Add event listener to the confirm button
+confirmButton.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  // If all checks are green, redirect to another website
+  if(checkPassword()) {
+    window.location.href = "https://2023.webdev-cf2m.be/Julian/prefowebsite/";
+  } else {
+    // If not, alert the user
+    alert("Please complete all checks before confirming.");
+  }
+});
     </script>
   </body>
 </html>
