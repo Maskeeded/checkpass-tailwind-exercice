@@ -163,6 +163,13 @@
   return lengthCheck && uppercaseCheck && numberCheck && symbolCheck;
 }
 
+function calculateAge(birthdate) {
+  var diff_ms = Date.now() - birthdate.getTime();
+  var age_dt = new Date(diff_ms);
+
+  return Math.abs(age_dt.getUTCFullYear() - 1970);
+}
+
 // Get the confirm button
 let confirmButton = document.querySelector('#validation-1');
 
@@ -170,12 +177,21 @@ let confirmButton = document.querySelector('#validation-1');
 confirmButton.addEventListener('click', function(e) {
   e.preventDefault();
 
-  // If all checks are green, redirect to another website
-  if(checkPassword()) {
+  var birthdate = new Date(document.querySelector('input[placeholder="Select a date"]').value);
+  var age = calculateAge(birthdate);
+
+  // If all checks are green and the user is at least 18 years old, redirect to another website
+  if(checkPassword() && age >= 18) {
     window.location.href = "https://2023.webdev-cf2m.be/Julian/prefowebsite/";
   } else {
+    // If the user is below 18 years old, alert the user
+    if (age < 18) {
+      alert("You must be at least 18 years old to confirm.");
+    }
     // If not, alert the user
-    alert("Please complete all checks before confirming.");
+    if (!checkPassword()) {
+      alert("Please complete all checks before confirming.");
+    }
   }
 });
     </script>
