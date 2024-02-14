@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="./src/output.css" rel="stylesheet">
-    <title>Vite App</title>
+    <title>Forms with TW</title>
   </head>
   <body class="flex items-center justify-center h-screen bg-slate-600">
 
@@ -42,7 +42,7 @@
         </div>
         <div class="relative right-[62px]">
           <label class="block text-gray-700 pb-2">Sex</label>
-          <select data-te-select-init class="w-25 h-[38px] border rounded dark:text-red-200">
+          <select data-te-select-init class="w-25 h-[38px] border rounded ">
             <option value="1">Homme</option>
             <option value="2">Femme</option>
             <option value="3">Autre</option>
@@ -62,11 +62,11 @@
         data-te-input-wrapper-init>
         <input
         type="text"
-        class="bg-white peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-neutral-700 placeholder:text-neutral-500 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+        class="bg-white peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-neutral-700 placeholder:text-neutral-500 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
         placeholder="Select a date" />
       <label
         for="floatingInput"
-        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none peer-focus:text-primary"
+        class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-non"
         >Select a date</label>
         </div>
     </div>
@@ -164,10 +164,10 @@
 }
 
 function calculateAge(birthdate) {
-  var diff_ms = Date.now() - birthdate.getTime();
-  var age_dt = new Date(diff_ms);
+  var diff_ms = Date.now() - birthdate.getTime(); // difference real time vs birth date
+  var age_dt = new Date(diff_ms); // new date object from the difference to unix
 
-  return Math.abs(age_dt.getUTCFullYear() - 1970);
+  return Math.abs(age_dt.getUTCFullYear() - 1970); // calculate the age, the getutcfull gets the date in utc, and starts from 1970
 }
 
 // Get the confirm button
